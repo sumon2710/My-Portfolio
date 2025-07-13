@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+       
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #121212;
+    color: #f1f1f1;
+    line-height: 1.6;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1e1e1e;
+    padding: 15px 10%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    /* position: fixed; */
+}
+
+.logo img {
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #00adb5;
+}
+
+.nav-links a {
+    color: #eeeeee;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: #00adb5;
+    border-bottom: 2px solid #00adb5;
+}
+
+
+.main {
+    background: linear-gradient(to right, #1a1a1a, #222222);
+    padding: 80px 10%;
+}
+
+.main-content h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.main-content p {
+    font-size: 1.2rem;
+    color: #aaaaaa;
+}
+
+.resume-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 25px;
+    background-color: #00adb5;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.resume-btn:hover {
+    background-color: #02878e;
+}
+
+/* .main img {
+    height: 30vh;
+    width: 18vw;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #00adb5;
+} */
+
+@media(min-width:150px) and (max-width:600px){
+    .main img{
+        height: 20vh;
+        width: 50vw;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #00adb5;
+    }
+}
+
+@media(min-width:601px) and (max-width:900px){
+    .main img{
+        height: 30vh;
+        width: 30vw;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #00adb5;
+    }
+}
+
+@media(min-width:901px) and (max-width:1300px){
+    .main img{
+        height: 30vh;
+        width: 30vw;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #00adb5;
+    }
+}
+
+@media(min-width:1301px) and (max-width:1700px){
+    .main img{
+        height: 30vh;
+        width: 25vw;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #00adb5;
+    }
+}
+
+@media(min-width:1701px) and (max-width:2100px){
+    .main img{
+        height: 30vh;
+        width: 18vw;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #00adb5;
+    }
+}
+
+@media(min-width:2101px) and (max-width:2500px){
+    .main img{
+        height: 28vh;
+        width: 14vw;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #00adb5;
+    }
+}
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    text-align: center;
+    color: #00adb5;
+}
+
+
+.about .container {
+    padding: 60px 10%;
+    background-color: #1e1e1e;
+}
+
+.skills-grid-line {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.skill-card {
+    background-color: #292929;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.skill-card:hover {
+    background-color: #00adb5;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.Projects .container {
+    padding: 60px 10%;
+    background-color: #171717;
+}
+
+.project-grid-line {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background-color: #252525;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 173, 181, 0.3);
+}
+
+.project-image {
+    background-color: #00adb5;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.project-info {
+    padding: 20px;
+}
+
+.Contact {
+    padding: 60px 10%;
+    background-color: #1e1e1e;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: #292929;
+    color: white;
+    font-size: 1rem;
+}
+
+.submit-button {
+    width: 100%;
+    background-color: #00adb5;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #02878e;
+}
+
+.resume-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 25px;
+    background-color: #00adb5;
+    color: #fff;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.resume-button:hover {
+    background-color: #02878e;
+}
+
+
+.footer {
+    background-color: #101010;
+    padding: 30px 10%;
+    text-align: center;
+    border-top: 1px solid #292929; 
+}
+
+.footer .socials a {
+    margin: 0 10px;
+    color: #00adb5;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.footer .socials a:hover {
+    transform: scale(1.2);
+}
+
+.footer p {
+    margin-top: 15px;
+    color: #aaa;
+}
+
+.footer i.fa-heart {
+    color: #02878e;
+}
+
+li{
+    margin-left: 3vw;
+}
+
+.education-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 7px 15px;
+    background-color: #00adb5;
+    color: #fff;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.languages {
+    background-color: #1a1a1a;
+    padding: 60px 10%;
+}
+
+.language-skill {
+    margin-bottom: 25px;
+}
+
+.language-skill span {
+    display: inline-block;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.progress-bar {
+    background-color: #2c2c2c;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 18px;
+}
+
+.progress {
+    height: 100%;
+    width: 0;
+    background-color: #00adb5;
+    animation: fill 2s ease forwards;
+    border-radius: 20px;
+}
+
+.progress.english {
+    width: 85%;
+}
+
+.progress.bengali{
+    width: 98%;
+}
+
+.progress.hindi {
+    width: 90%;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="/Passport Size Photograph.jpg" alt="Mr. Pal">
+                <span>Sumon Pal</span>
+            </div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#education">Education</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact-form">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="main">
+        <div class="container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+            <div class="main-content">
+                <h1>Hi, I'm Sumon Pal</h1>
+                <p>Aspiring Frontend Developer</p>
+                <a href="#contact-form" class="resume-button">Hire me</a><br><br><br>
+                <p><i class="fa-solid fa-envelope" style="font-size: 22px; color: #00adb5;"></i>  sumonpal6295@gmail.com</p>
+                <p><i class="fa-solid fa-phone" style="font-size: 22px; color: #00adb5;"></i>  +91 6295041064</p>
+            </div>
+            <img src="/Passport Size Photograph.jpg" alt="Mr. Pal">
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <H3>Hi, I'm Sumon Pal.</H3>
+            <p style="font-size: 20px;">I'm passionate about technology, creativity, and continuous learning. I have skills in <b>C programming</b> and <b>Python programming, web development, </b> and <b>data analytics</b>. I enjoy building user-friendly websites and analyzing data to uncover insights. I'm a motivated individual who thrives on solving problems and growing through new challenges.</p>
+        </div>
+    </section>
+
+    <section class="about" id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid-line">
+                <div class="skill-card">HTML & CSS</div>
+                <div class="skill-card">JavaScript</div>
+                <div class="skill-card">Python</div>
+                <div class="skill-card">C</div>
+                <div class="skill-card">C++</div>
+                <div class="skill-card">Git & GitHub</div>
+                <div class="skill-card">VS Code</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="languages" id="languages">
+    <div class="container">
+        <h2 class="section-title">Language Skills</h2>
+        <div class="language-skill">
+            <span>English</span>
+            <div class="progress-bar">
+                <div class="progress english"></div>
+            </div>
+        </div>
+        <div class="language-skill">
+            <span>Bengali</span>
+            <div class="progress-bar">
+                <div class="progress bengali"></div>
+            </div>
+        </div>
+        <div class="language-skill">
+            <span>Hindi</span>
+            <div class="progress-bar">
+                <div class="progress hindi"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <section class="Projects" id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="project-grid-line">
+                <div class="project-card">
+                    <div class="project-image">Madhyamik</div>
+                    <div class="project-info">
+                        <h3 style="text-align: center;">NIKUNJAPUR HIGH SCHOOL</h3>
+                        <br>
+                        <ul>
+                            <li><h4>Examination Year: 2021</h4></li>
+                            <li><h4>Marks - 643</h4></li>
+                            <li><h4>Grade - 91.9%</h4></li>
+                        </ul>
+                        <a href="MResult.pdf" target="_blank" class="resume-button">Download</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">Higher Secondary</div>
+                    <div class="project-info">
+                        <h3 style="text-align: center;">NIKUNJAPUR HIGH SCHOOL</h3>
+                        <br>
+                        <ul>
+                            <li><h4>Examination Year: 2023</h4></li>
+                            <li><h4>Marks - 383</h4></li>
+                            <li><h4>Grade - 76.6%</h4></li>
+                        </ul>
+                        <a href="HS.pdf" target="_blank" class="resume-button">Download</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">B. Tech</div>
+                    <div class="project-info">
+                        <h3 style="text-align: center;">KALYANI GOVERNMENT ENGINEERING COLLEGE</h3>
+                        <br>
+                        <ul>
+                            <li><h4>Starting Year: 2024</h4></li>
+                        </ul>
+                        <a href="sem1.pdf" target="_blank" class="resume-button">Sem - I</a>
+                        <a href="sem2.pdf" target="_blank" class="resume-button">Sem - II</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="Projects" id="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="project-grid-line">
+                <div class="project-card">
+                    <div class="project-image">Scientific Calculator</div>
+                    <div class="project-info">
+                        <h3>Scientific Calculator Web App</h3>
+                        <p> I have developed a fully functional scientific calculator using HTML, CSS, and JavaScript. It supports a wide range of operations including basic arithmetic, trigonometric functions, logarithms, exponentiation, and more. The clean UI is responsive and user-friendly, with smooth transitions and interactive button feedback for an enhanced user experience.</p>
+                         <h4>Using:<br>
+                            <i class="fa-brands fa-html5" style="font-size: 5vh; color: #00adb5;"></i> <i class="fa-brands fa-css" style="font-size: 5vh; color: #00adb5;"></i> <i class="fa-brands fa-js" style="font-size: 5vh; color: #00adb5;"></i></h4>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">Personal Portfolio</div>
+                    <div class="project-info">
+                        <h3>Portfolio</h3>
+                        <p>A portfolio is a personal website built using HTML and CSS to showcase your skills, projects, and experience professionally.</p><br>
+                        <h4>Using:<br>
+                            <i class="fa-brands fa-html5" style="font-size: 5vh; color: #00adb5;"></i> <i class="fa-brands fa-css" style="font-size: 5vh; color: #00adb5;"></i></h4>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="Contact" id="contact-form">
+        <div class="container">
+            <h2 class="section-title">Get in Touch with Me</h2>
+            <div class="contact-form">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email">
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message"></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="SP.pdf" target="_blank" class="resume-button">Download My Resume</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="socials">
+                <a href="https://www.facebook.com/sumon.pal.441335"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.instagram.com/i_am_sumon_07?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fa-brands fa-square-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/sumon-pal-604710326/"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://wa.me/qr/D4DPTS5BIGSLJ1 "><i class="fa-brands fa-square-whatsapp"></i></a>
+                <a href=""><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://github.com/sumon2710"><i class="fa-brands fa-square-github"></i></a>
+            </div>
+            <p>Made with <i class="fa-solid fa-heart"></i> by Sumon</p>
+        </div>
+    </footer>
+</body>
+</html>
